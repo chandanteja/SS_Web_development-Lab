@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="esdplacementstudentselection:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>esdplacementstudentselection</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="esdplacementstudentselection-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="esdplacementstudentselection:war exploded" />
+    </root>
+  </artifact>
+</component>
