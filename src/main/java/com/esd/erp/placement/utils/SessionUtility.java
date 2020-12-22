@@ -21,7 +21,7 @@ public class SessionUtility
             Configuration configuration = new Configuration().configure();
             sessionFact = configuration.buildSessionFactory();
         } catch (Throwable ex) {
-            System.err.println("Issue in creating Initial Session Factory"+ex);
+            System.err.println("Issue in creating Initial Session Factory : "+ex);
             throw new ExceptionInInitializerError(ex);
         }
     }

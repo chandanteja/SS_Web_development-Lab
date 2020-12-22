@@ -2,15 +2,13 @@ package com.esd.erp.placement.bean;
 
 import javax.persistence.*;
 
-
-
 @Entity
 @Table(name = "Placement")
 public class Placement
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer Id;
+    private Integer PlacId;
 
     @Column(nullable = false)
     private String Org_name;
@@ -31,7 +29,7 @@ public class Placement
 
     public Placement(Integer placement_id, String org_name, String profile, String description, Integer intake, Double min_cgpa)
     {
-        Id = placement_id;
+        PlacId = placement_id;
         Org_name = org_name;
         Profile = profile;
         this.description = description;
@@ -44,11 +42,11 @@ public class Placement
     }
 
     public Integer getPlacement_id() {
-        return Id;
+        return PlacId;
     }
 
     public void setPlacement_id(Integer placement_id) {
-        Id = placement_id;
+        PlacId = placement_id;
     }
 
     public String getOrg_name() {

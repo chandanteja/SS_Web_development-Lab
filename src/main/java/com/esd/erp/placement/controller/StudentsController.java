@@ -48,21 +48,20 @@ public class StudentsController {
     @Path("/specialisation")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getSpecialisation() {
-        List<String> spls = new ArrayList<>();
-        spls.add("TSCD");
-        spls.add("AIML");
-        spls.add("NC");
-        spls.add("VLSI");
-        return Response.ok().entity(spls).build();
+        List<String> spsl = new ArrayList<>();
+        spsl.add("TSCD");
+        spsl.add("AIML");
+        spsl.add("NC");
+        spsl.add("VLSI");
+        return Response.ok().entity(spsl).build();
     }
 
 
     @POST
-    @Path("/addstud")
+    @Path("/addstudents")
     public Response addStudent() throws URISyntaxException {
-        //employeeService.addEmployee();
         AddingData addingData = new AddingData();
-        addingData.add();
+      //  addingData.addStudentData();
         System.out.println("Sending response code OK to frontend");
         return Response.ok().build();
     }

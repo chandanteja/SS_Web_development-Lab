@@ -7,6 +7,9 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PlacementDAOImpl implements PlacementDAO {
 
     @Override
@@ -31,5 +34,21 @@ public class PlacementDAOImpl implements PlacementDAO {
         {
             session.close();
         }
+    }
+
+    @Override
+    public List<Placement> getOrganizations()
+    {
+        Session session = SessionUtility.getSession();
+        List<Placement> orgs = new ArrayList<>();
+        try {
+            for (final Object placement : session.createQuery("from Placement ").list()) {
+                orgs.add((Placement) placement);
+            }
+        } catch (HibernateException exception) {
+            System.out.print(exception.getLocalizedMessage());
+        }
+        return orgs;
+
     }
 }
