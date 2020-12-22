@@ -24,7 +24,7 @@ public class EmployeeController
         if(i==1)
         {
             AddingData addingData = new AddingData();
-            addingData.add();
+            addingData.addEmployeeData();
             System.out.println("Sending response code OK to frontend");
             i++;
         }
@@ -51,9 +51,8 @@ public class EmployeeController
     @POST
     @Path("/addEmp")
     public Response addEmployee() throws URISyntaxException{
-        //employeeService.addEmployee();
         AddingData addingData = new AddingData();
-        addingData.add();
+        addingData.addEmployeeData();
         System.out.println("Sending response code OK to frontend");
         return Response.ok().build();
     }

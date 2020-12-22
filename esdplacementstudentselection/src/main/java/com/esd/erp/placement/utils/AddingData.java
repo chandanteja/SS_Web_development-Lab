@@ -3,12 +3,13 @@ package com.esd.erp.placement.utils;
 import com.esd.erp.placement.bean.*;
 import com.esd.erp.placement.services.*;
 
+import javax.validation.constraints.Null;
 import java.util.Date;
 
 
 public class AddingData
 {
-    public void add()
+    public void addEmployeeData()
     {
         EmployeeService empService = new EmployeeService();
         //employee emp = new employee(6, "emp6", "emp7", "emp7@iiitb.org", "HOD", "Maintenance");
@@ -18,63 +19,76 @@ public class AddingData
         empService.addEmployee(emp);
         Employee emp1 = new Employee(2, "das", "gupta", "dasgupta@iiitb.org", "Outreach");
         empService.addEmployee(emp1);
-        Employee emp2 = new Employee(3, "arun", "raj", "arunraj_acc@iiitb.org","Accounts");
+        Employee emp2 = new Employee(3, "arun", "raj", "arunraj_acc@iiitb.org", "Accounts");
         empService.addEmployee(emp2);
 
-        Employee emp3 = new Employee(4, "akshay", "kumar", "akshaykum@iiitb.org","IT Services");
+        Employee emp3 = new Employee(4, "akshay", "kumar", "akshaykum@iiitb.org", "IT Services");
         empService.addEmployee(emp3);
+    }
 
-      /*  orgService orgService = new orgService();
+      public void addPlacementData() {
+          PlacementService placementService = new PlacementService();
+          Placement p1 = new Placement(1, "Microsoft", "sde", "software development engineer", 10, 3.0);
+          placementService.addCompany(p1);
+          Placement p2 = new Placement(2, "Cisco", "CSA", "Computer System Analyst", 5, 3.0);
+          placementService.addCompany(p2);
+          Placement p3 = new Placement(3, "Broadcom", "sde", "software development engineer", 8, null);
+          placementService.addCompany(p3);
+          Placement p4 = new Placement(4, "Amazon", "Applied scientist", "Research Scientist", 2, 3.0);
+          placementService.addCompany(p4);
+          Placement p5 = new Placement(5, "Rubrik", "sde", "Cloud Engnieer", 10, null);
+          placementService.addCompany(p5);
+          Placement p6 = new Placement(6, "AppDynamics", "sde", "Data Quality Engineer", 10, 3.2);
+          placementService.addCompany(p6);
+      }
+    public void addStudentData()
+    {
+        StudentsService studentsService = new StudentsService();
 
-        organisations o1 = new organisations(1, "Microsoft", "Bangalore");
-        orgService.addOrg(o1);
-        organisations o2 = new organisations(2, "Flipkart", "Noida");
-        orgService.addOrg(o2);
-        organisations o3 = new organisations(3, "Amazon", "Delhi");
-        orgService.addOrg(o3);
-        organisations o4 = new organisations(4, "HP", "Hyderabad");
-        orgService.addOrg(o4);
-
-
-        alumni_organisationService alorgService = new alumni_organisationService();
-
-        alumni_organisation ao1 = new alumni_organisation(1, o1, "light", "l@xyz.com", "sde2", "08-12-2017", "");
-        alorgService.addAlumOrg(ao1);
-        alumni_organisation ao2 = new alumni_organisation(2, o1, "lelouch", "le@xyz.com", "research engg", "08-12-2018","");
-        alorgService.addAlumOrg(ao2);
-        alumni_organisation ao3 = new alumni_organisation(3, o3, "Ryuk", "r@xyz.com", "sde3","08-12-2018", "");
-        alorgService.addAlumOrg(ao3);
-        alumni_organisation ao4 = new alumni_organisation(4, o4, "Edward", "e@xyz.com", "manager","08-08-2018", "");
-        alorgService.addAlumOrg(ao4);
-
-        placementService placementService = new placementService();
-        placement p1 = new placement(1, o1, "sde", "software development engineer", 10, 2.8 );
-        placementService.addPlacement(p1);
-        placement p2 = new placement(2, o1, "CSA", "Computer System Analyst", 5, 3.2 );
-        placementService.addPlacement(p2);
-        placement p3 = new placement(3, o2, "se", "software engineer", 8, null );
-        placementService.addPlacement(p3);
-        placement p4 = new placement(4, o3, "RS", "Research Scientist", 2,  3.2);
-        placementService.addPlacement(p4);
-        placement p5 = new placement(5, o3, "CE", "Cloud Engnieer", 10, null );
-        placementService.addPlacement(p5);
-        placement p6 = new placement(6, o4, "DQE", "Data Quality Engineer", 10, 2.8 );
-        placementService.addPlacement(p6);
-
-
-        studentsService studentsService = new studentsService();
-
-        students s1 = new students(1, "MT2020001", "Clark", "M", "c@iiitb.org", "AIML", 1);
+        Students s1 = new Students(1, "MT2020001", "Clark", "M", "c@iiitb.org", 2.8, 2020, "MTECH2018CSE", "AIML");
         studentsService.addStudent(s1);
-        students s2 = new students(2, "MT2020002", "Bruce", "W", "b@iiitb.org", "NC", 6);
+        Students s2 = new Students(2, "MT2020002", "Bruce", "W", "b@iiitb.org", 3.2, 2020, "MTECH2018CSE", "TSCD");
         studentsService.addStudent(s2);
-        students s3 = new students(3, "MT2020003", "Diana", "T", "d@iiitb.org", "VLSI", 4);
+        Students s3 = new Students(3, "MT2020003", "Diana", "T", "d@iiitb.org", 3.6, 2020, "MTECH2018CSE", "NC");
         studentsService.addStudent(s3);
-        students s4 = new students(4, "MT2020004", "Jon", "P", "J@iiitb.org", "TSCD", null);
+        Students s4 = new Students(4, "MT2020004", "Jon", "P", "J@iiitb.org", 2.9, 2020, "MTECH2018CSE", "AIML");
         studentsService.addStudent(s4);
-        students s5 = new students(5, "MT2020005", "Barry", "R", "br@iiitb.org", "AIML", 8);
+        Students s5 = new Students(5, "MT2020005", "Barry", "R", "br@iiitb.org", 3.4, 2021, "MTECH2019CSE", "TSCD");
         studentsService.addStudent(s5);
 
+        Students s6 = new Students(6, "MT2020006", "Jerry", "T", "Jerry@iiitb.org", 3.2, 2022, "MTECH2020CSE", "TSCD");
+        studentsService.addStudent(s6);
+    }
+    public void addPlacementFilterData()
+    {
+        PlacementFilterService pfs = new PlacementFilterService();
+        Placement p1 = new Placement(1, "Microsoft", "sde", "software development engineer", 10, 3.0);
+        PlacementFilter pf = new PlacementFilter(1, p1,"TSCD","MT2020CSE");
+        pfs.addPlacementFilterEntry(pf);
+
+        Placement p2 = new Placement(2, "Cisco", "CSA", "Computer System Analyst", 5, 3.0);
+        PlacementFilter pf1 = new PlacementFilter(2, p2,"AIML","MT2020CSE");
+        pfs.addPlacementFilterEntry(pf);
+
+        Placement p6 = new Placement(6, "AppDynamics", "sde", "Data Quality Engineer", 10, 3.2);
+        PlacementFilter pf2 = new PlacementFilter(3, p6,"AIML","MT2020CSE");
+        pfs.addPlacementFilterEntry(pf2);
+
+    }
+
+    public void addStudentCoursesTaken()
+    {
+        StudentCoursesService scs = new StudentCoursesService();
+
+        Students s6 = new Students(6, "MT2020006", "Jerry", "T", "Jerry@iiitb.org", 3.2, 2022, "MTECH2020CSE", "TSCD");
+        StudentCourses sc = new StudentCourses(1,"Algorithms",s6,3.2);
+        scs.addStudentCourses(sc);
+
+        Students s5 = new Students(5, "MT2020005", "Barry", "R", "br@iiitb.org", 3.4, 2021, "MTECH2019CSE", "TSCD");
+        StudentCourses sc1 = new StudentCourses(2,"ML",s5,3.0);
+        scs.addStudentCourses(sc1);
+    }
+/*
         placStudService placStudService = new placStudService();
         //public placement_student(Integer id, placement placement_id, students student_id,  String acceptance, String comments, String date) {
         placement_student ps1 = new placement_student(1, p1, s1 , "ACCEPT", "02-11-20020");
@@ -97,4 +111,4 @@ public class AddingData
        */
 
     }
-}
+

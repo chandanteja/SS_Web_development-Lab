@@ -1,11 +1,14 @@
 package com.esd.erp.placement.bean;
 
+import org.hibernate.annotations.Check;
+
 import javax.persistence.*;
 import java.util.List;
 
 
 @Entity
 @Table(name = "Students")
+@Check( constraints = "cgpa < 4.0" )
 public class Students {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,19 +24,24 @@ public class Students {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false, columnDefinition="Decimal(2,1) default '0.0'")
+    @Column(nullable = false,columnDefinition="Decimal(2,1) default '0.0'")
     private Double cgpa;    //to check eligibility for placements
 
     private Integer grad_year;  //to check eligibility for placements
 
+    @Column(nullable = false)
     private String domain;
+
+    @Column(nullable = false)
+    private String Specialization;
+
 
  //   @OneToOne
  //   @JoinColumn(name = "Placement_Student_ID")
  //   private placementStudent place_stud_id;
 
-    public Students(Integer student_id, String roll_num, String first_name, String last_name, String email, Double cgpa, Integer grad_year, String domain)//, placementStudent place_stud_id)
-    {
+
+    public Students(Integer student_id, String roll_num, String first_name, String last_name, String email, Double cgpa, Integer grad_year, String domain, String specialization) {
         this.student_id = student_id;
         this.roll_num = roll_num;
         this.first_name = first_name;
@@ -42,11 +50,10 @@ public class Students {
         this.cgpa = cgpa;
         this.grad_year = grad_year;
         this.domain = domain;
-       // this.place_stud_id = place_stud_id;
+        Specialization = specialization;
     }
 
-    public Students()
-    {
+    public Students() {
     }
 
     public Integer getStudent_id() {
@@ -113,13 +120,11 @@ public class Students {
         this.domain = domain;
     }
 
-  /*  public placementStudent getPlace_stud_id() {
-        return place_stud_id;
+    public String getSpecialization() {
+        return Specialization;
     }
 
-    public void setPlace_stud_id(placementStudent place_stud_id) {
-        this.place_stud_id = place_stud_id;
+    public void setSpecialization(String specialization) {
+        Specialization = specialization;
     }
-    */
-
 }
