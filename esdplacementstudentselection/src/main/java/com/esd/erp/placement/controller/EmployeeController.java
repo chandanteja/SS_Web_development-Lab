@@ -52,7 +52,7 @@ public class EmployeeController
     @Path("/addEmp")
     public Response addEmployee() throws URISyntaxException{
         AddingData addingData = new AddingData();
-        addingData.addEmployeeData();
+        //addingData.addEmployeeData();
         System.out.println("Sending response code OK to frontend");
         return Response.ok().build();
     }

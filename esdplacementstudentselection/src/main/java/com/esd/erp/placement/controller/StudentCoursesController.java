@@ -21,7 +21,7 @@ public class StudentCoursesController {
     @Path("/addCourses")
     public Response addStudentCourses() throws URISyntaxException{
         AddingData addingData = new AddingData();
-        addingData.addStudentCoursesTaken();
+        //addingData.addStudentCoursesTaken();
         System.out.println("Inside adding of student courses Controller");
         return Response.ok().build();
     }

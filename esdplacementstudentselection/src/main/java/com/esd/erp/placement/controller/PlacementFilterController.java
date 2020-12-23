@@ -25,7 +25,7 @@ public class PlacementFilterController
     public Response addPlacementFilter() throws URISyntaxException
     {
         AddingData addingData = new AddingData();
-        addingData.addPlacementFilterData();
+       // addingData.addPlacementFilterData();
         System.out.println("Inside placement filter controller");
         return Response.ok().build();
     }

@@ -15,5 +15,9 @@
         <!-- Bean classes -->
         <mapping class="com.esd.erp.placement.bean.Students" />
         <mapping class="com.esd.erp.placement.bean.Employee" />
+        <mapping class="com.esd.erp.placement.bean.Placement" />
+        <mapping class="com.esd.erp.placement.bean.PlacementFilter" />
+        <mapping class="com.esd.erp.placement.bean.PlacementStudent" />
+        <mapping class="com.esd.erp.placement.bean.StudentCourses" />
     </session-factory>
 </hibernate-configuration>

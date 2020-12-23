@@ -21,12 +21,14 @@ login_form.addEventListener('submit', async (e) => {
         {
 
             document.getElementById("login-success").style.display = "block";
-            setTimeout(() => { location.href = "dashboard1.html"; }, 2000);
+            setTimeout(() => { location.href = "dashboard.html"; }, 2000);
                    // To navigate to dashboard.html page
 
-            window.setTimeout(function() {
+        /*    window.setTimeout(function() {
                 $(".alert").fadeTo(1000, 0)
             }, 2000);
+            */
+
 
         }
         else
@@ -35,16 +37,19 @@ login_form.addEventListener('submit', async (e) => {
 
             //This below code is for fading out the alerts  is not working as expected.need to look into this again
 
-              window.setTimeout(function() {
+            /*  window.setTimeout(function() {
                   $(".alert").fadeTo(3000, 0)
               }, 3000);
+              */
+
 
 
         }
     }
 });
 
-async function fetch_department(){
+async function fetch_department()
+{
     let response = await fetch("api/employee/get");
     let departments = await response.json(); // read response body and parse as JSON
     console.log(departments);
@@ -56,4 +61,9 @@ async function fetch_department(){
     }
 
     let response2 = await fetch("api/employee/addEmp", {method: 'POST'});
+   // let response3 = await fetch("api/placement/addCompanies", {method: 'POST'});
+   // let response4 = await fetch("api/placementfilter/addFilter", {method: 'POST'});
+   // let response6=  await fetch("api/student/addstudents", {method: 'POST'});
+   // let response5 = await fetch("api/studentcourses/addCourses", {method: 'POST'});
+   // let response7 = await fetch("api/placementstudent/addplacstud", {method: 'GET'});
 }

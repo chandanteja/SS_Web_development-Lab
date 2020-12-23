@@ -60,14 +60,27 @@ public class AddingData {
 
         PlacementFilter pf2 = new PlacementFilter(3, p6, "AIML", "MT2020CSE");
         pfs.addPlacementFilterEntry(pf2);
-        StudentCoursesService scs = new StudentCoursesService();
 
+
+        StudentCoursesService scs = new StudentCoursesService();
 
         StudentCourses sc = new StudentCourses(1, "Algorithms", s6, 3.2);
         scs.addStudentCourses(sc);
 
         StudentCourses sc1 = new StudentCourses(2, "ML", s5, 3.0);
         scs.addStudentCourses(sc1);
+
+
+        PlacementStudentService pss = new PlacementStudentService();
+
+        PlacementStudent ps=new PlacementStudent(1,p1,s1,"Pending","26/10/2019");
+        pss.addPlacStud(ps);
+
+        PlacementStudent ps1=new PlacementStudent(2,p1,s2,"Pending","26/10/2019");
+        pss.addPlacStud(ps1);
+
+        PlacementStudent ps2=new PlacementStudent(3,p2,s3,"Pending","26/10/2019");
+        pss.addPlacStud(ps2);
 
     }
 }

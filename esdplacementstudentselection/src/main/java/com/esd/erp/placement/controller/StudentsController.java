@@ -61,7 +61,7 @@ public class StudentsController {
     @Path("/addstudents")
     public Response addStudent() throws URISyntaxException {
         AddingData addingData = new AddingData();
-        addingData.addStudentData();
+      //  addingData.addStudentData();
         System.out.println("Sending response code OK to frontend");
         return Response.ok().build();
     }

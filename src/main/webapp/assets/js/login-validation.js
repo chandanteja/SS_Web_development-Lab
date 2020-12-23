@@ -61,9 +61,9 @@ async function fetch_department()
     }
 
     let response2 = await fetch("api/employee/addEmp", {method: 'POST'});
-    let response3 = await fetch("api/placement/addCompanies", {method: 'POST'});
-    let response4 = await fetch("api/placementfilter/addFilter", {method: 'POST'});
-    let response6=  await fetch("api/student/addstudents", {method: 'POST'});
-    let response5 = await fetch("api/studentcourses/addCourses", {method: 'POST'});
-    let response7 = await fetch("api/placement/displayorg", {method: 'GET'});
+   // let response3 = await fetch("api/placement/addCompanies", {method: 'POST'});
+   // let response4 = await fetch("api/placementfilter/addFilter", {method: 'POST'});
+   // let response6=  await fetch("api/student/addstudents", {method: 'POST'});
+   // let response5 = await fetch("api/studentcourses/addCourses", {method: 'POST'});
+   // let response7 = await fetch("api/placementstudent/addplacstud", {method: 'GET'});
 }
