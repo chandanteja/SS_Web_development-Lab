@@ -42,4 +42,10 @@ public class PlacementService {
 
         return placementDAO.getAppliedStudentsData();
     }
+    public List<Object[]> getEligibleStudentsData()
+    {
+        System.out.println("Inside getEligiblestud data of service");
+
+        return placementDAO.getEligibleStudentsData();
+    }
 }

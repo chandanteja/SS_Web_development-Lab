@@ -10,4 +10,5 @@ public interface PlacementDAO
     void addCompany(Placement p);
     public List<Placement> getOrganizations();
     public List<Object[]> getAppliedStudentsData();
+    public List<Object[]> getEligibleStudentsData();
 }

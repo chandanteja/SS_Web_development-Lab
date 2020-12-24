@@ -36,9 +36,9 @@ public class AddingData {
 
         StudentsService studentsService = new StudentsService();
 
-        Students s1 = new Students(1, "MT2020001", "Clark", "M", "c@iiitb.org", 2.8, 2020, "MTECH2018CSE", "AIML");
+        Students s1 = new Students(1, "MT2020001", "Clark", "M", "c@iiitb.org", 3.4, 2020, "MTECH2020CSE", "TSCD");
         studentsService.addStudent(s1);
-        Students s2 = new Students(2, "MT2020002", "Bruce", "W", "b@iiitb.org", 3.2, 2020, "MTECH2018CSE", "TSCD");
+        Students s2 = new Students(2, "MT2020002", "Bruce", "W", "b@iiitb.org", 3.2, 2020, "MTECH2020CSE", "TSCD");
         studentsService.addStudent(s2);
         Students s3 = new Students(3, "MT2020003", "Diana", "T", "d@iiitb.org", 3.6, 2020, "MTECH2018CSE", "NC");
         studentsService.addStudent(s3);
@@ -52,13 +52,13 @@ public class AddingData {
 
         PlacementFilterService pfs = new PlacementFilterService();
 
-        PlacementFilter pf = new PlacementFilter(1, p1, "TSCD", "MT2020CSE");
+        PlacementFilter pf = new PlacementFilter(1, p1, "TSCD", "MTECH2020CSE");
         pfs.addPlacementFilterEntry(pf);
 
-        PlacementFilter pf1 = new PlacementFilter(2, p2, "AIML", "MT2020CSE");
+        PlacementFilter pf1 = new PlacementFilter(2, p2, "AIML", "MTECH2020CSE");
         pfs.addPlacementFilterEntry(pf1);
 
-        PlacementFilter pf2 = new PlacementFilter(3, p6, "AIML", "MT2020CSE");
+        PlacementFilter pf2 = new PlacementFilter(3, p6, "AIML", "MTECH2020CSE");
         pfs.addPlacementFilterEntry(pf2);
 
 

@@ -15,7 +15,7 @@ public class PlacementFilter
     @JoinColumn(name="Placement_id")
     private Placement Placement_id;
 
-    @Column(nullable = false, columnDefinition = "default 'TSCD'")
+    @Column(nullable = false) //columnDefinition="default 'TSCD'")
     private String Specialization;
 
     @Column(nullable = false)
