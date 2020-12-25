@@ -36,18 +36,18 @@ public class AddingData {
 
         StudentsService studentsService = new StudentsService();
 
-        Students s1 = new Students(1, "MT2020001", "Clark", "M", "c@iiitb.org", 3.4, 2020, "MTECH2020CSE", "TSCD");
+        Students s1 = new Students(1, "MT2020001", "Clark", "M", "c@iiitb.org", 3.4, 2020, "MTECH2020CSE", "TSCD",0);
         studentsService.addStudent(s1);
-        Students s2 = new Students(2, "MT2020002", "Bruce", "W", "b@iiitb.org", 3.2, 2020, "MTECH2020CSE", "TSCD");
+        Students s2 = new Students(2, "MT2020002", "Bruce", "W", "b@iiitb.org", 3.2, 2020, "MTECH2020CSE", "TSCD",0);
         studentsService.addStudent(s2);
-        Students s3 = new Students(3, "MT2020003", "Diana", "T", "d@iiitb.org", 3.6, 2020, "MTECH2018CSE", "NC");
+        Students s3 = new Students(3, "MT2020003", "Diana", "T", "d@iiitb.org", 3.6, 2020, "MTECH2018CSE", "NC",0);
         studentsService.addStudent(s3);
-        Students s4 = new Students(4, "MT2020004", "Jon", "P", "J@iiitb.org", 2.9, 2020, "MTECH2018CSE", "AIML");
+        Students s4 = new Students(4, "MT2020004", "Jon", "P", "J@iiitb.org", 2.9, 2020, "MTECH2018CSE", "AIML",0);
         studentsService.addStudent(s4);
-        Students s5 = new Students(5, "MT2020005", "Barry", "R", "br@iiitb.org", 3.4, 2021, "MTECH2019CSE", "TSCD");
+        Students s5 = new Students(5, "MT2020005", "Barry", "R", "br@iiitb.org", 3.4, 2021, "MTECH2019CSE", "TSCD",0);
         studentsService.addStudent(s5);
 
-        Students s6 = new Students(6, "MT2020006", "Jerry", "T", "Jerry@iiitb.org", 3.2, 2022, "MTECH2020CSE", "TSCD");
+        Students s6 = new Students(6, "MT2020006", "Jerry", "T", "Jerry@iiitb.org", 3.2, 2022, "MTECH2020CSE", "TSCD",0);
         studentsService.addStudent(s6);
 
         PlacementFilterService pfs = new PlacementFilterService();

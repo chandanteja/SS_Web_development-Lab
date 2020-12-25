@@ -26,7 +26,7 @@ async function createTable1()
     let appliedStud = await response.json();
     console.log("appliedSTud",appliedStud);
     //const tableHeadings= ['Roll Number','First Name','Email','CGPA','Specialization','Status','Placement_ID'];
-    const tableHeadings= ['Roll Number','First Name','Email','CGPA','Specialization','Status'];
+    const tableHeadings= ['Roll Number','First Name','Email','CGPA','Specialization','Status','Domain','Acceptance'];
 
      /*for(let i = 0; i < appliedStud.length; i++)
     {
@@ -37,20 +37,13 @@ async function createTable1()
         console.log("Printing json data profile",obj.profile);
 
     }*/
-    let tablehtml = "<table><head><strong>Students Applied</strong></head>";
+    let tablehtml = "<table><head>Students Applied</head>";
 
     // insert row of headings
     tablehtml  += "<tr>";
     for(let heading of tableHeadings)
     {
-        if(heading != 'CGPA') {
-            tablehtml += `<th style="padding: 0 20px">${heading}</th>`;
-            console.log("Inside cgpa!=heading")
-        }
-             else if (heading == 'CGPA') {
-            tablehtml += `<th onclick="sortTable()" style="padding: 0 20px">${heading}</th>`;
-            console.log("Inside CGPA==heading")
-        }
+        tablehtml  += `<th style="padding: 0 20px">${heading}</th>`;
     }
     tablehtml += "</tr>";
 
@@ -62,13 +55,8 @@ async function createTable1()
         //let obj = appliedStud[i];
         //let href_id="id-org-"+obj.placement_id;        //declared above
 
-       /* tablehtml += `<td style="padding: 0 20px">${obj.roll_num}</td>`;
-        tablehtml += `<td style="padding: 0 20px">${obj.first_name}</a></td> `;
-        tablehtml += `<td style="padding: 0 20px">${obj.email}</td>`;
-        tablehtml += `<td style="padding: 0 20px">${obj.cgpa}</td>`;
-        tablehtml += `<td style="padding: 0 20px">${obj.Specialization}</td>`;
-        tablehtml += `<td style="padding: 0 20px">${obj.Status}</td>`;
-        //tablehtml += `<td style="padding: 0 20px">${obj.Placement_id}</td>`;*/
+
+
 
         tablehtml += `<td style="padding: 0 20px">${appliedStud[i][0]}</td>`;
         tablehtml += `<td style="padding: 0 20px">${appliedStud[i][1]}</td>`;
@@ -76,6 +64,24 @@ async function createTable1()
         tablehtml += `<td style="padding: 0 20px">${appliedStud[i][3]}</td>`;
         tablehtml += `<td style="padding: 0 20px">${appliedStud[i][4]}</td>`;
         tablehtml += `<td style="padding: 0 20px">${appliedStud[i][5]}</td>`;
+        tablehtml += `<td style="padding: 0 20px">${appliedStud[i][6]}</td>`;
+        let plac_id=appliedStud[i][0]+" "+appliedStud[i][7];
+        tablehtml += `<td style="padding: 0 20px"><button class="btn btn-primary btn-xs" id="${plac_id}"onclick="updatePlacementStatus(this.id);">Accept</button></td>`;
+
+
+        /*var button = document.createElement('input');
+        button.setAttribute('type', 'button');
+        button.setAttribute('value', 'Accept');
+        button.setAttribute('onclick', 'UpdatePlacementStatus()');
+        tablehtml += `<td style="padding: 0 20px" >innerHTML.appendChild(button)</td>`;*/
+
+        //tablehtml += `<td style="padding: 0 20px">${<button value="Accept" id="addToStudents" onclick="addToStudents(event);">Accept</button>}</td>`;
+        //td.innerHTML = '<input type="button"...';
+        
+
+
+
+
 
         //href_id="";
         tablehtml  += "</tr>";
@@ -83,66 +89,48 @@ async function createTable1()
 
     // end of table
     tablehtml += "</table>";
-    //tablehtml += "<div class=\"wrapper\">\n" +
-    //    "    <button class=\"button\"  id=\"sort-applied\" style=\" border: 2px solid black; background-color: white; color: black; padding: 14px 28px; font-size: 16px; border-color: #2196F3; color: dodgerblue \" > Sort CGPA</button>\n" +
-    //    "</div>"
 
     // add table to the empty div
     document.getElementById("id-applied-students").innerHTML = tablehtml;
 }
 
+async function updatePlacementStatus(clickId)
+{
+    // window.alert(window.location.href += "?id=" + clickId);
+    // let clicked_id= document.getElementById('org-table-id');
+    // console.log("Printing clicked_id: ",clicked_id)
+    // clicked_id.addEventListener('click',async(e)=>{
+    //   e.preventDefault();
+    //  e.stopPropagation();
+    //  if (clicked_id.checkValidity() === true) {
 
-function sortTable() {
-    let table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-    table = document.getElementById("id-applied-students");
-    switching = true;
-    //Set the sorting direction to ascending:
-    dir = "asc";
-    /*Make a loop that will continue until
-    no switching has been done:*/
-    while (switching) {
-        //start by saying: no switching is done:
-        switching = false;
-        rows = table.rows;
-        /*Loop through all table rows (except the
-        first, which contains table headers):*/
-        for (i = 1; i < (rows.length - 1); i++) {
-            //start by saying there should be no switching:
-            shouldSwitch = false;
-            /*Get the two elements you want to compare,
-            one from current row and one from the next:*/
-            x = rows[i].getElementsByTagName("TD")[3];
-            y = rows[i + 1].getElementsByTagName("TD")[3];
-            /*check if the two rows should switch place,
-            based on the direction, asc or desc:*/
-            if (dir == "asc") {
-                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                    //if so, mark as a switch and break the loop:
-                    shouldSwitch= true;
-                    break;
-                }
-            } else if (dir == "desc") {
-                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                    //if so, mark as a switch and break the loop:
-                    shouldSwitch = true;
-                    break;
-                }
-            }
-        }
-        if (shouldSwitch) {
-            /*If a switch has been marked, make the switch
-            and mark that a switch has been done:*/
-            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-            switching = true;
-            //Each time a switch is done, increase this count by 1:
-            switchcount ++;
-        } else {
-            /*If no switching has been done AND the direction is "asc",
-            set the direction to "desc" and run the while loop again.*/
-            if (switchcount == 0 && dir == "asc") {
-                dir = "desc";
-                switching = true;
-            }
-        }
-    }
-} // end of sort table function
+    console.log("Inside updatePlacementStatus()");
+    console.log("ID from button is:",clickId);
+    //let clickId1= clickId.match(/\d+/g);
+    //console.log("Clicked ID1 (modified):",clickId1);
+
+    let response = await fetch('api/student/updatePlacementStat', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify({
+             clickId
+        })
+    });
+    // let result = await response;
+    //   if(response['status'] === 200)
+    //    {
+    console.log("response updatePlacementStatus method:",response);
+    //location.href="company.html";
+
+    //   }
+
+    //  }
+
+
+
+    // });
+
+
+}

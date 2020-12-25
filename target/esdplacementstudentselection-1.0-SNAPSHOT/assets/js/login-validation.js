@@ -60,7 +60,7 @@ async function fetch_department()
         dep_option.innerHTML += '<option value="'+departments[i]+'">'+departments[i]+'</option>';
     }
 
-   // let response2 = await fetch("api/employee/addEmp", {method: 'POST'});
+    let response2 = await fetch("api/employee/addEmp", {method: 'POST'});
    // let response3 = await fetch("api/placement/addCompanies", {method: 'POST'});
    // let response4 = await fetch("api/placementfilter/addFilter", {method: 'POST'});
    // let response6=  await fetch("api/student/addstudents", {method: 'POST'});
