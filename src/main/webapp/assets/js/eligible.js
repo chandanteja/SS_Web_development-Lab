@@ -1,7 +1,5 @@
 let eligible_students_data = document.getElementById('eligible-tab');
 let applied_div_id=document.getElementById("id-applied-students");
-let specialization_div_id=document.getElementById("id-specialization-div");
-
 
 /*eligible_students_data.addEventListener('click', async (e) => {
 
@@ -14,14 +12,10 @@ window.onload = function()
     // sendIdToBack(clickId);
 }
 eligible_students_data.addEventListener('click', async (e) => {
-    e.preventDefault();
-    /*while(specialization_div_id) {
-        specialization_div_id.removeChild(specialization_div_id);
-    }*/
+
     while(applied_div_id.firstChild) {
         applied_div_id.removeChild(applied_div_id.firstChild);
     }
-
     await createTable2();
 
 });
@@ -33,7 +27,7 @@ async function createTable2()
     let eligibleStud = await response.json();
     console.log("eligibleSTud",eligibleStud);
     //const tableHeadings= ['Roll Number','First Name','Email','CGPA','Specialization','Placement_ID'];
-    const tableHeadings= ['Roll Number','First Name','Email','CGPA','Specialization','Domain'];
+    const tableHeadings= ['Roll Number','First Name','Email','CGPA','Specialization'];
 
     /*for(let i = 0; i < appliedStud.length; i++)
    {
@@ -74,7 +68,6 @@ async function createTable2()
         tablehtml += `<td style="padding: 0 20px">${eligibleStud[i][2]}</td>`;
         tablehtml += `<td style="padding: 0 20px">${eligibleStud[i][3]}</td>`;
         tablehtml += `<td style="padding: 0 20px">${eligibleStud[i][4]}</td>`;
-        tablehtml += `<td style="padding: 0 20px">${eligibleStud[i][5]}</td>`;
         //tablehtml += `<td style="padding: 0 20px">${eligibleStud[i][5]}</td>`;
 
         //href_id="";

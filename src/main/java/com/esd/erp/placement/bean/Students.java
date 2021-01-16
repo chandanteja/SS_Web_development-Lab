@@ -35,16 +35,13 @@ public class Students {
     @Column(nullable = false)
     private String Specialization;
 
-    @Column(nullable = false)//we will explicitly consider this as zero for not placed yet.
-    private Integer placement_status_id;
-
 
  //   @OneToOne
  //   @JoinColumn(name = "Placement_Student_ID")
  //   private placementStudent place_stud_id;
 
 
-    public Students(Integer student_id, String roll_num, String first_name, String last_name, String email, Double cgpa, Integer grad_year, String domain, String specialization, Integer placement_status_id) {
+    public Students(Integer student_id, String roll_num, String first_name, String last_name, String email, Double cgpa, Integer grad_year, String domain, String specialization) {
         this.student_id = student_id;
         this.roll_num = roll_num;
         this.first_name = first_name;
@@ -54,7 +51,6 @@ public class Students {
         this.grad_year = grad_year;
         this.domain = domain;
         Specialization = specialization;
-        this.placement_status_id = placement_status_id;
     }
 
     public Students() {
@@ -130,13 +126,5 @@ public class Students {
 
     public void setSpecialization(String specialization) {
         Specialization = specialization;
-    }
-
-    public Integer getPlacement_status_id() {
-        return placement_status_id;
-    }
-
-    public void setPlacement_status_id(Integer placement_status_id) {
-        this.placement_status_id = placement_status_id;
     }
 }

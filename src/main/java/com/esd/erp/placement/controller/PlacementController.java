@@ -59,11 +59,6 @@ public class PlacementController
         return Response.ok().build();
     }
 
-    public Integer getOrgID()
-    {
-        return idVal;
-    }
-
 
 
     @GET
@@ -88,9 +83,9 @@ public class PlacementController
         //System.out.println("Id from frontend is "+ idVal);
         for(int i=0;i<appliedStud.size();i++)
         {
-            System.out.println("Element "+ i + " is " + appliedStud.get(i)[7]);
+            System.out.println("Element "+ i + " is " + appliedStud.get(i)[6]);
             //System.out.println("type is "+ appliedStud.get(i)[6].getClass() );
-            temp= (Integer) appliedStud.get(i)[7];
+            temp= (Integer) appliedStud.get(i)[6];
             if(temp == idVal)
             {
                 System.out.println("Inside comparison of placement ids");
@@ -114,12 +109,12 @@ public class PlacementController
         //System.out.println("Id from frontend is "+ idVal);
         for(int i=0;i<eligibleStud.size();i++)
         {
-            System.out.println("Element "+ i + " is " + eligibleStud.get(i)[6]);
+            System.out.println("Element "+ i + " is " + eligibleStud.get(i)[5]);
             //System.out.println("type is "+ appliedStud.get(i)[6].getClass() );
-            temp1= (Integer) eligibleStud.get(i)[6];
+            temp1= (Integer) eligibleStud.get(i)[5];
             if(temp1 == idVal)
             {
-                System.out.println("Inside comparison of placement ids");
+                System.out.println("Inside comparison of placement ids for eligible studs");
                 eligibleStudCompany.add(eligibleStud.get(i));
             }
         }

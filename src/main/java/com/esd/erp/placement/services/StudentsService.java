@@ -11,6 +11,5 @@ public class StudentsService {
     {
         studentsDAO.addStudent(s);
     }
-    public void updatePlacementId(String roll,Integer pla){studentsDAO.updatePlacementId(roll,pla);}
 
 }

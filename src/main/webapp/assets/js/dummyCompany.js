@@ -10,14 +10,14 @@ let eligible_div_id=document.getElementById("id-eligible-students");
     }
 }*/
 
-async function fetch_specializations()
+async function fetch_department()
 {
     console.log("entered fetch_dept()");
     let filterhtml= "<div class=\"mb-3\">\n" +
         "      <label for=\"specialization\">Specialization</label>\n" +
         "      <select class=\"custom-select d-block w-100\" id=\"id-specialization-select\" required>\n" +
         "      </select>\n" +
-        "<button class=\"btn btn-lg btn-primary btn-block tg3 float-right\" id=\"button1\"  style='margin-top: 15px; margin-bottom: 20px '  type=\"button\" onclick=\"filter()\">"+
+        "<button class=\"btn btn-lg btn-primary btn-block tg3 float-right\" id=\"button1\"  style='margin-top: 15px; margin-bottom: 20px '  type=\"button\" onclick=\"filter_tbl()\">"+
         "    Filter  " +
         "</button>" +
         "    </div>";
@@ -36,31 +36,6 @@ async function fetch_specializations()
 
 }
 
-async function fetch_Domain()
-{
-    console.log("entered fetch_domain()");
-    let domainhtml= "<div class=\"mb-3\">\n" +
-        "      <label for=\"domain\">Domain</label>\n" +
-        "      <select class=\"custom-select d-block w-100\" id=\"id-domain-select\" required>\n" +
-        "      </select>\n" +
-        "<button class=\"btn btn-lg btn-primary btn-block tg3 float-right\" id=\"button1\"  style='margin-top: 15px; margin-bottom: 20px '  type=\"button\" onclick=\"filter()\">"+
-        "    Filter  " +
-        "</button>" +
-        "    </div>";
-    document.getElementById("id-domain-div").innerHTML = domainhtml;
-
-
-    let response = await fetch("api/student/domain");
-    let domains = await response.json(); // read response body and parse as JSON
-    console.log(domains);
-    let dmn_option = document.getElementById('id-domain-select');
-    dmn_option.innerHTML = '<option value=""> Choose...</option>';
-
-    for(let i = 0 ; i<domains.length ; i++){
-        dmn_option.innerHTML += '<option value="'+domains[i]+'">'+domains[i]+'</option>';
-    }
-
-}
 
 applied_students_data.addEventListener('click', async (e) => {
 
@@ -68,8 +43,7 @@ applied_students_data.addEventListener('click', async (e) => {
         eligible_div_id.removeChild(eligible_div_id.firstChild);
     }
     await createTable1();
-    await fetch_specializations();
-    await fetch_Domain();
+    await fetch_department();
 });
 
 async function createTable1()
@@ -79,7 +53,7 @@ async function createTable1()
     let appliedStud = await response.json();
     console.log("appliedSTud",appliedStud);
     //const tableHeadings= ['Roll Number','First Name','Email','CGPA','Specialization','Status','Placement_ID'];
-    const tableHeadings= ['Roll Number','First Name','Email','CGPA','Specialization','Status','Domain','Acceptance'];
+    const tableHeadings= ['Roll Number','First Name','Email','CGPA','Specialization','Status'];
 
     /*for(let i = 0; i < appliedStud.length; i++)
    {
@@ -131,9 +105,6 @@ async function createTable1()
         tablehtml += `<td style="padding: 0 20px">${appliedStud[i][3]}</td>`;
         tablehtml += `<td style="padding: 0 20px">${appliedStud[i][4]}</td>`;
         tablehtml += `<td style="padding: 0 20px">${appliedStud[i][5]}</td>`;
-        tablehtml += `<td style="padding: 0 20px">${appliedStud[i][6]}</td>`;
-        let plac_id=appliedStud[i][0]+" "+appliedStud[i][7];
-        tablehtml += `<td style="padding: 0 20px"><button class="btn btn-primary btn-xs" id="${plac_id}"onclick="updatePlacementStatus(this.id);">Accept</button></td>`;
 
         //href_id="";
         tablehtml  += "</tr>";
@@ -147,36 +118,6 @@ async function createTable1()
 
     // add table to the empty div
     document.getElementById("id-applied-students").innerHTML = tablehtml;
-}
-async function updatePlacementStatus(clickId)
-{
-    // window.alert(window.location.href += "?id=" + clickId);
-    // let clicked_id= document.getElementById('org-table-id');
-    // console.log("Printing clicked_id: ",clicked_id)
-    // clicked_id.addEventListener('click',async(e)=>{
-    //   e.preventDefault();
-    //  e.stopPropagation();
-    //  if (clicked_id.checkValidity() === true) {
-
-    console.log("Inside updatePlacementStatus()");
-    console.log("ID from button is:",clickId);
-    //let clickId1= clickId.match(/\d+/g);
-    //console.log("Clicked ID1 (modified):",clickId1);
-
-    let response = await fetch('api/student/updatePlacementStat', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-        },
-        body: JSON.stringify({
-            clickId
-        })
-    });
-    // let result = await response;
-    //   if(response['status'] === 200)
-    //    {
-    console.log("response updatePlacementStatus method:",response);
-    //location.href="company.html";
 }
 
 
@@ -236,10 +177,10 @@ function sortTable() {
 } // end of sort table function
 
 
-/*async function filter_tbl()
+async function filter_tbl()
 {
-    // let response1 = await fetch('api/placement/appliedstudents');
-    // let appliedStud1 = await response1.json();
+   // let response1 = await fetch('api/placement/appliedstudents');
+   // let appliedStud1 = await response1.json();
     console.log("Inside filter_tbl");
     let table, valSel,rows, switching, i, x, y, shouldSwitch, dir, table_complete;
     table = document.getElementById("id-applied-students");
@@ -247,113 +188,36 @@ function sortTable() {
     valSel=document.getElementById('id-specialization-select').value;
     console.log("valSel: ",valSel);
     //console.log(table);
-    // table1=table;
-    // table1.innerHTML='';
+   // table1=table;
+   // table1.innerHTML='';
     switching = true;
 
-    // while (switching) {
+   // while (switching) {
 
 
-    rows = table.rows;
+        rows = table.rows;
 
-    for (i = 1; i < (rows.length); i++) {
+        for (i = 1; i < (rows.length); i++) {
 
-        x = rows[i].getElementsByTagName("TD")[4];
-        console.log("x: ",x);
-        console.log("x.textContent:",x.textContent);
-        if(valSel) {
-            if (valSel == 'Select All')
-            {
-                console.log("Inside select all");
-                //  document.getElementById("id-applied-students").innerHTML = table_complete;
-                await createTable1();
+            x = rows[i].getElementsByTagName("TD")[4];
+            console.log("x: ",x);
+            console.log("x.textContent:",x.textContent);
+            if(valSel) {
+                if (valSel == 'Select All')
+                {
+                    console.log("Inside select all");
+                  //  document.getElementById("id-applied-students").innerHTML = table_complete;
+                    await createTable1();
+                }
+               else if (x.textContent != valSel) {
+                    console.log("inside x!=tscd");
+                    //table.deleteRow(x);
+                    rows[i].remove();
+                    // rows = table.rows;
+                }
             }
-            else if (x.textContent != valSel) {
-                console.log("inside x!=tscd");
-                //table.deleteRow(x);
-                rows[i].remove();
-                // rows = table.rows;
             }
-        }
-    }
-    //   }
+     //   }
 
-
-}
-*/
-
-async function filter()
-{
-    splVal=document.getElementById('id-specialization-select').value;
-    domVal=document.getElementById('id-domain-select').value;
-    console.log("Inside filter()");
-    console.log("splval: ",splVal);
-    console.log("domVal ",domVal);
-
-    let response = await fetch('api/student/Filter', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json;charset=utf-8'
-        },
-        body: JSON.stringify({
-            splVal,
-            domVal
-
-        })
-    });
-    let filters = await response.json();
-
-    console.log("response filter method:",filters);
-
-    const tableHeadings= ['Roll Number','First Name','Email','CGPA','Specialization','Status','Domain','Acceptance'];
-
-
-    let tablehtml = "<table><head style='text-align: center'><strong>Students Applied</strong></head>";
-
-    // insert row of headings
-    tablehtml  += "<tr>";
-    for(let heading of tableHeadings)
-    {
-        if (heading == 'CGPA') {
-            tablehtml += `<th onclick="sortTable()" style="padding: 0 20px">${heading}</th>`;
-            console.log("Inside CGPA==heading")
-        }
-        else if(heading != 'CGPA' )
-        {
-            tablehtml += `<th style="padding: 0 20px">${heading}</th>`;
-            console.log("Inside cgpa!=heading");
-
-        }
-    }
-    tablehtml += "</tr>";
-
-    // iterate data and add row of cells for each
-    //for(let element of elements)
-    for(let i = 0; i < filters.length; i++)
-    {
-        tablehtml  += "<tr>";
-
-        tablehtml += `<td style="padding: 0 20px">${filters[i][0]}</td>`;
-        tablehtml += `<td style="padding: 0 20px">${filters[i][1]}</td>`;
-        tablehtml += `<td style="padding: 0 20px">${filters[i][2]}</td>`;
-        tablehtml += `<td style="padding: 0 20px">${filters[i][3]}</td>`;
-        tablehtml += `<td style="padding: 0 20px">${filters[i][4]}</td>`;
-        tablehtml += `<td style="padding: 0 20px">${filters[i][5]}</td>`;
-        tablehtml += `<td style="padding: 0 20px">${filters[i][6]}</td>`;
-        let plac_id=filters[i][0]+" "+filters[i][7];
-        tablehtml += `<td style="padding: 0 20px"><button class="btn btn-primary btn-xs" id="${plac_id}"onclick="updatePlacementStatus(this.id);">Accept</button></td>`;
-
-        //href_id="";
-        tablehtml  += "</tr>";
-    }
-
-    // end of table
-    tablehtml += "</table>";
-    //tablehtml += "<div class=\"wrapper\">\n" +
-    //    "    <button class=\"button\"  id=\"sort-applied\" style=\" border: 2px solid black; background-color: white; color: black; padding: 14px 28px; font-size: 16px; border-color: #2196F3; color: dodgerblue \" > Sort CGPA</button>\n" +
-    //    "</div>"
-
-    // add table to the empty div
-    document.getElementById("id-applied-students").innerHTML = tablehtml;
 
 }
